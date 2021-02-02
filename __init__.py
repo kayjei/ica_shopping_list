@@ -539,28 +539,29 @@ class Connect:
             
                 if Connect.listId is None and listId is None:
                     _LOGGER.info("Shopping-list not found: %s", icaList)
-#                    newOfflineId = secrets.token_hex(15)
-#                    _LOGGER.debug("New hex-string: %s", newOfflineId)
-#                    data = json.dumps({"OfflineId": newOfflineId, "Title": icaList, "SortingStore": 0})
+                    newOfflineId = secrets.token_hex(4) + "-" + secrets.token_hex(2) + "-" + secrets.token_hex(2) + "-"
+                    newOfflineId = newOfflineId + secrets.token_hex(2) + "-" + secrets.token_hex(6)
+                    _LOGGER.debug("New hex-string: %s", newOfflineId)
+                    data = json.dumps({"OfflineId": newOfflineId, "Title": icaList, "SortingStore": 0})
 
-#                    url = 'https://handla.api.ica.se/api/user/offlineshoppinglists'
-#                    headers = {"Content-Type": "application/json", "AuthenticationTicket": authTick}
+                    url = 'https://handla.api.ica.se/api/user/offlineshoppinglists'
+                    headers = {"Content-Type": "application/json", "AuthenticationTicket": authTick}
                     
-#                    _LOGGER.debug("List does not exist. Creating %s", icaList)
-#                    req = requests.post(url, headers=headers, data=data)
+                    _LOGGER.debug("List does not exist. Creating %s", icaList)
+                    req = requests.post(url, headers=headers, data=data)
 
-#                    if req.status_code == 200:
-#                        url = 'https://handla.api.ica.se/api/user/offlineshoppinglists'
-#                        headers = {"Content-Type": "application/json", "AuthenticationTicket": authTick}
-#                        req = requests.get(url, headers=headers)
-#                        response = json.loads(req.content)
+                    if req.status_code == 200:
+                        url = 'https://handla.api.ica.se/api/user/offlineshoppinglists'
+                        headers = {"Content-Type": "application/json", "AuthenticationTicket": authTick}
+                        req = requests.get(url, headers=headers)
+                        response = json.loads(req.content)
 
-#                        _LOGGER.debug(response)
+                        _LOGGER.debug(response)
 
-#                        for lists in response["ShoppingLists"]:
-#                            if lists["Title"] == icaList:
-#                                listId = lists["OfflineId"]
-#                                _LOGGER.debug(icaList + " created with offlineId %s", listId)
+                        for lists in response["ShoppingLists"]:
+                            if lists["Title"] == icaList:
+                                listId = lists["OfflineId"]
+                                _LOGGER.debug(icaList + " created with offlineId %s", listId)
 
             authResult = {"authTicket": authTick, "listId": listId}
             return authResult
