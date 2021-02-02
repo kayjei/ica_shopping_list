@@ -11,4 +11,4 @@ ica_shopping_list:
   password: ICA PASSWORD
 ```
 
-```listname``` is case sensitive and shopping list must exist in ICA app
+```listname``` is case sensitive. If the list is not found, it will be created.
