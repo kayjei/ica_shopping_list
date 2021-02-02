@@ -5,5 +5,7 @@
   "requirements": [],
   "dependencies": [
   ],
-  "codeowners": []
+  "codeowners": [],
+  "issue_tracker": "None",
+  "version": 0.1
 }
