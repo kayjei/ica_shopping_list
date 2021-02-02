@@ -1,8 +1,8 @@
 # ica_shopping_list
 HomeAssistant integration to ICA shopping list
 
-Install as custom component.
-In configuration.yaml
+Install as custom component.<br>
+In configuration.yaml:
 
 ```
 ica_shopping_list:
