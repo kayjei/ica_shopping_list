@@ -12,4 +12,5 @@ ica_shopping_list:
   password: ICA PASSWORD
 ```
 
-```listname``` is case sensitive. If the list is not found, it will be created.
+```listname``` is case sensitive.<br>
+If the list is not found, it will be created. Space and å, ä, ö is valid.
