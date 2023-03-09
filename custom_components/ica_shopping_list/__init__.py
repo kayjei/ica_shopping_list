@@ -8,7 +8,6 @@ import secrets
 
 import voluptuous as vol
 
-#from homeassistant.const import HTTP_NOT_FOUND, HTTP_BAD_REQUEST
 from http import HTTPStatus
 from homeassistant.core import callback
 from homeassistant.components import http
