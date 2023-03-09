@@ -8,7 +8,7 @@ import secrets
 
 import voluptuous as vol
 
-from homeassistant.const import HTTP_NOT_FOUND, HTTP_BAD_REQUEST
+from http import HTTPStatus
 from homeassistant.core import callback
 from homeassistant.components import http
 from homeassistant.components.http.data_validator import RequestDataValidator
@@ -336,9 +336,9 @@ class UpdateShoppingListItemView(http.HomeAssistantView):
             request.app["hass"].bus.async_fire(EVENT)
             return self.json(item)
         except KeyError:
-            return self.json_message("Item not found", HTTP_NOT_FOUND)
+            return self.json_message("Item not found", HTTPStatus.NOT_FOUND)
         except vol.Invalid:
-            return self.json_message("Item not found", HTTP_BAD_REQUEST)
+            return self.json_message("Item not found", HTTPStatus.BAD_REQUEST)
 
 
 class CreateShoppingListItemView(http.HomeAssistantView):
