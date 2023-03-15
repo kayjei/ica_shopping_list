@@ -8,6 +8,7 @@ import secrets
 
 import voluptuous as vol
 
+
 from http import HTTPStatus
 from homeassistant.core import callback
 from homeassistant.components import http
@@ -341,6 +342,7 @@ class UpdateShoppingListItemView(http.HomeAssistantView):
             return self.json_message("Item not found", HTTPStatus.BAD_REQUEST)
 
 
+
 class CreateShoppingListItemView(http.HomeAssistantView):
     """View to retrieve shopping list content."""
 
@@ -452,7 +454,7 @@ class Connect:
             headers = {"Content-Type": "application/json", "AuthenticationTicket": Connect.AUTHTICKET}
             req = requests.get(url, headers=headers)
 
-            if req.status_code != requests.codes.ok:
+            if req.status_code != 200:
                 _LOGGER.exception("API request returned error %d", req.status_code)
 
             else:
@@ -461,7 +463,7 @@ class Connect:
                 json_data = json.loads(req.content)
                 return json_data
 
-        elif req.status_code != requests.codes.ok:
+        elif req.status_code != 200:
             _LOGGER.exception("API request returned error %d", req.status_code)
         else:
             _LOGGER.debug("API request returned OK %d", req.text)
@@ -492,7 +494,7 @@ class Connect:
             headers = {"Content-Type": "application/json", "AuthenticationTicket": Connect.AUTHTICKET}
             req = requests.post(url, headers=headers)
 
-            if req.status_code != requests.codes.ok:
+            if req.status_code != 200:
                 _LOGGER.exception("API request returned error %d", req.status_code)
 
             else:
@@ -501,7 +503,7 @@ class Connect:
                 json_data = json.loads(req.content)
                 return json_data
 
-        elif req.status_code != requests.codes.ok:
+        elif req.status_code != 200:
             _LOGGER.exception("API request returned error %d", req.status_code)
         else:
             _LOGGER.debug("API request returned OK %d", req.text)
@@ -521,7 +523,7 @@ class Connect:
         url = "https://handla.api.ica.se/api/login"
         req = requests.get(url, auth=(str(icaUser), str(icaPassword)))
 
-        if req.status_code != requests.codes.ok:
+        if req.status_code != 200:
             _LOGGER.exception("API request returned error %d", req.status_code)
         else:
             _LOGGER.debug("API request returned OK %d", req.text)
