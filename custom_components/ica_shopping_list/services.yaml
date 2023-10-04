@@ -10,3 +10,9 @@ complete_item:
     name:
       description: The name of the item to mark as completed.
       example: Beer
+clear_item:
+  description: Removes an item from the shopping list.
+  fields:
+    name:
+      description: The name of the item to delete.
+      example: Beer
