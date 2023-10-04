@@ -3,7 +3,8 @@ HomeAssistant integration to ICA shopping list
 
 Install as custom component, manually or using HACS.<br>
 You need to have a valid ICA account and a password (4-6 digits)<br><br>
-Optionaliy you can add a default store sorting, 0 = none. 
+You then need to specify store sorting for sorting your list items (0 = no sort order) 
+
 Add in configuration.yaml:
 
 ```
@@ -13,11 +14,13 @@ ica_shopping_list:
   password: !secret ica_pw
   storesorting: 0
 ```
+
 In your secrets.yaml add:
 ```
 ica_username: [USERNAME]
 ica_pw: [4-6 DIGIT PASSWORD]
 ```
+
 
 
 ```listname``` is case sensitive.<br>
